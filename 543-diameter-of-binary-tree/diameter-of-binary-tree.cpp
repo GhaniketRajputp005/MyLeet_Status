@@ -25,8 +25,8 @@ public:
 
     }
     int diameterOfBinaryTree(TreeNode* root) {
-        int maxsize = 0,val;
-       val = maxdia(root, &maxsize );
+        int maxsize = 0;
+        maxdia(root, &maxsize );
         return maxsize;
     }
 };
