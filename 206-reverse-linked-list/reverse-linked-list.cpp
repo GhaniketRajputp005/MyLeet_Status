@@ -12,21 +12,31 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
 
-       if(head ==  NULL) return NULL;
-       else if(head->next==NULL) return head;
-
-        vector<int>v;
-        ListNode* temp = head;
-        while(temp!=NULL){
-            v.push_back(temp->val);
-            temp = temp->next;
-        }
-        temp = head;
-        for(int i = v.size()-1; i>=0; i--){
-            temp->val = v[i];
-            temp = temp->next;
-        }
-        return head;
+// //////////// Iterative //////////////
+    //  ListNode* lastnode = NULL;
+    //    ListNode *nextnode;
+      
+    //    while(head!=NULL){
+    //        nextnode = head->next;
+    //        head->next = lastnode;
+    //        lastnode = head;
+    //        head = nextnode;
+    //    }
+    //    return lastnode;
         
+    // }
+
+
+    //////////Recursive
+
+    if(head == NULL || head->next == NULL){
+        return head;
+    }
+
+    ListNode* newhead = reverseList(head->next);// to keep track of our new head
+    head->next->next = head;
+    head->next = NULL;
+
+    return newhead;
     }
 };
