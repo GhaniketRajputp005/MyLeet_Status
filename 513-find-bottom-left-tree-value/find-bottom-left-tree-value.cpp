@@ -12,27 +12,27 @@
  */
 class Solution {
 public:
-    void dfs (TreeNode* root, int* value, int* depth, int* maxdepth) {
+    void dfs (TreeNode* root, int* value, int depth, int* maxdepth) {
 
         if (root == NULL)
              { return; }
 
-        (*depth)++;
-        if (*depth >  * maxdepth)
+      
+        if (depth >  * maxdepth)
              {
-                *maxdepth = *depth;
+                *maxdepth = depth;
                   * value = root->val;
             }
 
-        dfs(root->left, value, depth, maxdepth);
+        dfs(root->left, value, depth+1, maxdepth);
 
-        dfs(root->right, value, depth, maxdepth);
-        (*depth)--;
+        dfs(root->right, value, depth+1, maxdepth);
+
     }
 
     int findBottomLeftValue(TreeNode* root) {
-        int value = 0, depth = -1, maxdepth = -1;
-        dfs (root, &value, &depth, &maxdepth);
+        int value = 0, depth = 0, maxdepth = -1;
+        dfs (root, &value, 0, &maxdepth);
         return value;
     }
 };
