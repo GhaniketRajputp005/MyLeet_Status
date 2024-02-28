@@ -28,5 +28,17 @@ public:
       
         delete slow;
         return head;
+
+    //        if(head->next == NULL) return NULL;
+    // vector<Node*>v;
+    // Node* temp = head;
+    // while(temp!= NULL){
+    //     v.push_back(temp);
+    //     temp = temp->next;
+    // }
+    // temp = v[v.size()/2 -1];
+    // temp->next = temp->next->next;
+   
+    // return head;
     }
 };
