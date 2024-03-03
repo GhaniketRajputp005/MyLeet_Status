@@ -19,6 +19,7 @@ public:
                 if (grid[i][j] <= k) {
                     ctr++;
                 }
+                else{break;}
             }
 
         return ctr;
