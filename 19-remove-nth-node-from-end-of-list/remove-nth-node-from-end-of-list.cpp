@@ -12,23 +12,58 @@ class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
 
+        // ////// o(N), O(1)
+
         int ctr = 0;
-        unordered_map<int,ListNode*> umap;
-        ListNode* temp = head;
-        while(temp != NULL){
-            ctr++;
-            umap[ctr] = temp;
-            temp = temp->next;
-        }
+        ListNode* previous = head, *after = head;
+        while(1){
 
-        if(ctr == n){
-            head= head->next;
-            return head;
+            if(after != NULL){
+                after = after->next;
+                cout<<"ctr1 = "<<ctr<<endl;
+                ctr++;
+            }
+            else{
+                cout<<"ctr = "<<ctr<<endl;
+                if(ctr == n){
+                    head = head->next;
+                    return head;
+                }
+                int val = ctr - n - 1;
+                cout<<val<<endl;
+                while(val--){
+                    previous = previous->next;
+                }
+                previous->next = previous->next->next;
+                return head;  
+            }
+            
         }
-        umap[ctr - n]->next= umap[ctr - n+1]->next;
-
-        return head;
+        return 0;
     }
+
+////////////    O(N),o(N) one pass
+    //     int ctr = 0;
+    //     unordered_map<int,ListNode*> umap;
+    //     ListNode* temp = head;
+    //     while(temp != NULL){
+    //         ctr++;
+    //         umap[ctr] = temp;
+    //         temp = temp->next;
+    //     }
+
+    //     if(ctr == n){
+    //         head= head->next;
+    //         return head;
+    //     }
+    //     umap[ctr - n]->next= umap[ctr - n+1]->next;
+
+    //     return head;
+    // }
+
+
+
+
     //     int ctr =0;  O(N),o(N), two pass.
     //     ListNode* temp = head;
     //     while(temp != NULL){
