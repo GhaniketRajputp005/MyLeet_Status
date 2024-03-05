@@ -31,7 +31,7 @@ public:
 
         ListNode *temp = head, *fast = head, *slow = head;
 
-        while (fast->next != NULL && fast->next->next != NULL) {
+        while (fast != NULL && fast->next!= NULL) {
             // by doing fast->next->next!= NULL we are ensuring slow points to
             // the right half.
 
@@ -39,7 +39,7 @@ public:
             fast = fast->next->next;
         }
 
-        ListNode* secondhead = reverse(slow->next);
+        ListNode* secondhead = reverse(slow);
 
         while (secondhead != NULL) {
 
@@ -50,7 +50,7 @@ public:
             temp = temp->next;
         }
 
-        secondhead = reverse(slow->next);
+        secondhead = reverse(slow);
 
         return true;
     }
