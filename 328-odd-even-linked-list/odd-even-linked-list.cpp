@@ -12,33 +12,57 @@ class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
 
-        if(head == NULL || head->next == NULL )
-        return head;
+if (head == NULL || head->next == NULL)
+            return head;
 
-        ListNode* odd = head, *even = head->next;
-        ListNode* h_odd = odd, * h_even = even;
 
-        while( even != NULL  && even->next != NULL ){
-
-            odd->next = even->next;
-            
-            even->next = even->next->next;
-            odd = odd->next;
-            even = even->next;
-
+        ListNode* morehead = new ListNode(0);
+        ListNode* lesshead = new ListNode(0);
+        ListNode* m_head = morehead;
+        ListNode* l_head = lesshead;
+        ListNode*temp = head;
+        int ctr = 0;
+        while(temp){
+            ctr ++;
+            if( ctr % 2 != 0){
+                lesshead->next = temp;
+                lesshead = temp;
+            }
+            else{
+                
+                morehead->next = temp;
+                morehead = temp;
+            }
+            temp = temp->next;
         }
+        
+        lesshead->next = m_head->next;
+        morehead->next = NULL;
+        return l_head->next;
 
-        odd->next = h_even;
+
+
+
+        // if(head == NULL || head->next == NULL )
+        // return head;
+
+        // ListNode* odd = head, *even = head->next;
+        // ListNode* h_odd = odd, * h_even = even;
+
+        // while( even != NULL  && even->next != NULL ){
+
+        //     odd->next = even->next;
+            
+        //     even->next = even->next->next;
+        //     odd = odd->next;
+        //     even = even->next;
+
+        // }
+
+        // odd->next = h_even;
         
         
-        return h_odd;
-
-
-
-
-
-
-
+        // return h_odd;
 
 
 
