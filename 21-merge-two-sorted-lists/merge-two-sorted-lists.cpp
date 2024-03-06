@@ -16,19 +16,9 @@ public:
          if(list2 == NULL) return list1;
         else if(list1 == NULL) return list2;
         
-        ListNode * head = new ListNode(0), *temp = NULL;
+        ListNode * head = new ListNode(0), *temp = head;
         
-        if(list1->val < list2->val){
-            head->next = list1;
-            temp = list1;
-            list1 = list1->next;
-        }
-        else{
-             head->next = list2;
-            temp = list2;
-            list2 = list2->next;
-        }
-        
+      
         while(list1 && list2){
             
             if(list1->val <= list2->val){
