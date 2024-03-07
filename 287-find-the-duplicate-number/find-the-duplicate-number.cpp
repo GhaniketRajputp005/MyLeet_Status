@@ -8,11 +8,12 @@ public:
 
             if(nums[abs(nums[i]) - 1] < 0){
                 dup = abs(nums[i]);
+                return dup;
             }
             else{
                 nums[abs(nums[i]) - 1] *= -1;
             }
         }
-        return dup;
+      return -1;
     }
 };
