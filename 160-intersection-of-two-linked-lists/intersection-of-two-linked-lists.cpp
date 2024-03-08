@@ -10,36 +10,36 @@ class Solution {
 public:
     ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
 
-        ListNode* temp = headA;
+        ListNode* temp1 = headA,*temp2 = headB;
         int la = 0, lb = 0;
-        while (temp != NULL) {
+        while (temp1 != NULL || temp2 != NULL) {
+            if(temp1!=NULL){
             la++;
-            temp = temp->next;
+            temp1 = temp1->next;
+            }
+            if(temp2 != NULL ){
+                lb++;
+                temp2 = temp2->next;
+            }
         }
-        temp = headB;
-        while (temp != NULL) {
-            lb++;
-            temp = temp->next;
-        }
+       
 
-        int diff = 0;
-        if (la == lb)
-            ;
-        else {
-            if (la > lb) {
-                diff = la - lb;
+        int diff = la - lb;
+        
+            if (diff > 0) {
+                
 
                 while (diff--) {
                     headA = headA->next;
                 }
             } else {
-                diff = lb - la;
+                
 
-                while (diff--) {
+                while (diff++) {
                     headB = headB->next;
                 }
             }
-        }
+        
 
         while (headB != NULL) {
             if (headB == headA) {
