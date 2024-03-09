@@ -8,36 +8,57 @@ public:
         if (matrix[rows - 1][cols - 1] < target)
             return false;
 
-        int i = 0, j = rows - 1;
+        int i = 0, j = rows * cols -1;
 
-        while (i <= j) {
+        while(i <= j){
 
-            int mid = (i + j) / 2;
-            if (target == matrix[mid][cols - 1])
-                return true;
-            else if (target < matrix[mid][cols - 1]) {
-                j = mid - 1;
-            } else {
-                i = mid + 1;
-            }
+            int mid = (i + j)/2;
+
+            int rownum = mid / cols;
+            int colnum = mid % cols;
+
+            if(matrix[rownum][colnum] == target) return true;
+            else if(matrix[rownum][colnum] < target)
+             i = mid + 1;
+             else{
+                 j = mid - 1;
+             }
+
+
         }
-
-        // now index i will point to location where target should be
-        // present.
-
-        int left = 0, right = cols - 1;
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (target == matrix[i][mid])
-                return true;
-            else if (target < matrix[i][mid]) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
-        }
-
         return false;
+
+        // o(logn +logm)
+        // int i = 0, j = rows - 1;
+
+        // while (i <= j) {
+
+        //     int mid = (i + j) / 2;
+        //     if (target == matrix[mid][cols - 1])
+        //         return true;
+        //     else if (target < matrix[mid][cols - 1]) {
+        //         j = mid - 1;
+        //     } else {
+        //         i = mid + 1;
+        //     }
+        // }
+
+        // // now index i will point to location where target should be
+        // // present.
+
+        // int left = 0, right = cols - 1;
+
+        // while (left <= right) {
+        //     int mid = (left + right) / 2;
+        //     if (target == matrix[i][mid])
+        //         return true;
+        //     else if (target < matrix[i][mid]) {
+        //         right = mid - 1;
+        //     } else {
+        //         left = mid + 1;
+        //     }
+        // }
+
+        // return false;
     }
 };
