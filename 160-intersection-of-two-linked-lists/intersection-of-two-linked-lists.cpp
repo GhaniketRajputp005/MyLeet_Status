@@ -18,7 +18,7 @@ public:
          if(temp1 == NULL){
              temp1 = headB;
          }
-         if(temp2 == NULL){
+         else if(temp2 == NULL){
              temp2 = headA;
          }
          if(temp1 == temp2) return temp1;
