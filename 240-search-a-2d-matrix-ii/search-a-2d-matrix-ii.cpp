@@ -5,6 +5,8 @@ public:
         int rows = matrix.size()-1;
         int cols = matrix[0].size()-1;
 
+
+// o(n + m)
         int i = 0;
         while( i <= rows && cols >= 0){
             if(matrix[i][cols] == target) return true;
