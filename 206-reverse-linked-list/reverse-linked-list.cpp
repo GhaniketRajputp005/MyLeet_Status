@@ -37,6 +37,6 @@ public:
     head->next->next = head;
     head->next = NULL;
 
-    return newhead;
+    return newhead;// returning newhead coz we need to track our head;
     }
 };
