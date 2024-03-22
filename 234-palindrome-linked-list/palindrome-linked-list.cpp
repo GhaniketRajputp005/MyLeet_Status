@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* reverse(ListNode* slow) {
-       
+
         if (slow->next == NULL)
             return slow;
         ListNode *before = slow, *after = slow->next;
@@ -38,9 +38,6 @@ public:
             slow = slow->next;
         }
 
-     
-
-     
         ListNode* head2 = reverse(slow);
 
         while (head2 != NULL) {
@@ -53,7 +50,6 @@ public:
             temp = temp->next;
         }
 
-        head2 = reverse(slow);
         return true;
     }
 };
