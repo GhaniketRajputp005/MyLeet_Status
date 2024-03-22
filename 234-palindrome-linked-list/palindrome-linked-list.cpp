@@ -11,10 +11,8 @@
 class Solution {
 public:
     ListNode* reverse(ListNode* slow) {
-        // cout<<slow->val;
-
-        if(slow == NULL) cout<<"mai NULL";
-        if (slow == NULL||slow->next == NULL)
+       
+        if (slow->next == NULL)
             return slow;
         ListNode *before = slow, *after = slow->next;
         before->next = NULL;
@@ -40,16 +38,9 @@ public:
             slow = slow->next;
         }
 
-        ListNode* temp1 = head;
+     
 
-      
-        while(temp1 != slow){
-            cout<< temp1->val<<" ";
-            temp1 = temp1->next;
-        }
-
-        cout<<"slow = "<<slow->val;
-        if(slow == NULL) cout<<"kya NULL\n";
+     
         ListNode* head2 = reverse(slow);
 
         while (head2 != NULL) {
@@ -62,7 +53,7 @@ public:
             temp = temp->next;
         }
 
-        head2 = reverse(head2);
+        head2 = reverse(slow);
         return true;
     }
 };
