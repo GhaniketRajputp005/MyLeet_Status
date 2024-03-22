@@ -40,6 +40,7 @@ public:
 
         ListNode* head2 = reverse(slow);
 
+        ListNode* temp1 = head2;
         while (head2 != NULL) {
 
             if (temp->val != head2->val) {
@@ -50,6 +51,7 @@ public:
             temp = temp->next;
         }
 
+    reverse(temp1);
         return true;
     }
 };
