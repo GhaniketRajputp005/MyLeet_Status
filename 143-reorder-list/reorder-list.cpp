@@ -10,35 +10,67 @@
  */
 class Solution {
 public:
+
+    ListNode * curr;
+    void reorder( ListNode* slow){
+        if(slow == NULL) return;
+
+        reorder( slow->next);
+        
+        ListNode* currnxt = curr->next;
+        curr->next = slow;
+        slow->next = currnxt;
+        curr = currnxt;
+
+
+    }
+
+
     void reorderList(ListNode* head) {
         if(head->next == NULL || head->next->next == NULL){
             return ;
         }
         
-        stack<ListNode*>st;
+        curr = head;
 
-        ListNode* temp = head;
-        while(temp != NULL){
-            st.push(temp);
-            temp = temp->next;
+        ListNode *slow = head, *fast = head;
+        while(fast != NULL && fast->next != NULL){
+            fast = fast->next->next;
+            slow = slow->next;
         }
 
-        int k = st.size()/2;
-        temp = head;
+        fast = slow;
+        reorder( slow->next);
+        fast->next = NULL;
+
+
+
+
+
+
+
+
+
+
+
+
         
+        // slow->next = NULL;
+        // stack<ListNode*>st;
 
-        while(k--){
-            ListNode* topnode = st.top();
-            st.pop();
-            ListNode* tempnxt = temp->next;
+        // while(fast != NULL){
+        //     st.push(fast);
+        //     fast = fast->next;
+        // }
 
-            temp->next = topnode;
-            topnode->next = tempnxt;
-            temp = tempnxt;
-        }
-        temp->next = NULL;
-
-
+        // slow = head;
+        // while(!st.empty()){
+        //     fast = slow->next;
+        //     slow->next = st.top();
+        //     st.pop();
+        //     slow->next->next = fast;
+        //     slow = fast;
+        // }
 
       
 
