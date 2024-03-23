@@ -15,29 +15,30 @@ public:
             return ;
         }
         
-        ListNode *slow = head, *fast = head;
-        while(fast != NULL && fast->next != NULL){
-            fast = fast->next->next;
-            slow = slow->next;
-        }
-
-        fast = slow->next;
-        slow->next = NULL;
         stack<ListNode*>st;
 
-        while(fast != NULL){
-            st.push(fast);
-            fast = fast->next;
+        ListNode* temp = head;
+        while(temp != NULL){
+            st.push(temp);
+            temp = temp->next;
         }
 
-        slow = head;
-        while(!st.empty()){
-            fast = slow->next;
-            slow->next = st.top();
+        int k = st.size()/2;
+        temp = head;
+        
+
+        while(k--){
+            ListNode* topnode = st.top();
             st.pop();
-            slow->next->next = fast;
-            slow = fast;
+            ListNode* tempnxt = temp->next;
+
+            temp->next = topnode;
+            topnode->next = tempnxt;
+            temp = tempnxt;
         }
+        temp->next = NULL;
+
+
 
       
 
