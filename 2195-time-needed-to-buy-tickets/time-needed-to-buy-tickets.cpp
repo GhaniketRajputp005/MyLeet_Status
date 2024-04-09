@@ -1,26 +1,19 @@
 class Solution {
 public:
-    int timeRequiredToBuy(vector<int>& tickets, int k) {
-        vector<int>v(tickets);
-        int ctr = 0;
-
-        for(int i = 0; i <= k; i++){
-            if(v[i] != 0){
-            ctr += 1;
-            v[i] -= 1;
-            }
-
-        }
-        while( v[k] != 0 ){
-
-            for(int i = 0; i < v.size(); i++){
-                if(v[i] != 0){
-                    v[i] -= 1;
-                    ctr++;
+    int timeRequiredToBuy(vector<int>& v, int k) {
+        int n = v.size();
+        int t = 0;
+        while (true) {
+            for (int i = 0; i < n; i++){
+                if (v[i] > 0) {
+                    v[i]=v[i]-1;
+                    t++;
                 }
-            }
-        }
-
-        return ctr;
+            if (i == k && v[i] == 0)
+                return t;
+        }}
+    
+    return 0;
     }
-};
+}
+;
