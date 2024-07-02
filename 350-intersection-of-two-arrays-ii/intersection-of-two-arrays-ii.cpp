@@ -14,5 +14,12 @@ public:
             }
         }
         return res;
+
+        // if it is said dont use extra space
+        // then sort both arrays
+        // take two pointers i, j poiting to start of each array 
+        // take another pointer k, that maintains the matched elemets in any of given array
+        // this way no extra space is used and given array is used for providing answer.
+
     }
 };
