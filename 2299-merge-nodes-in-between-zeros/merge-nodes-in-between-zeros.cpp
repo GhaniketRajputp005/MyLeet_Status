@@ -22,14 +22,14 @@ public:
             if (curr_node->val == 0) {
                 value->val = sum;
                 sum = 0;
-                value->next = curr_node;
-                temp = value;
+                value->next = curr_node->next;
+                // temp = value;
                 value = value->next;
             }
 
             curr_node = curr_node->next;
         }
-        temp->next = NULL;
+        // temp->next = NULL;
         return head;
     }
 };
