@@ -1,13 +1,4 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+
 class Solution {
 public:
     vector<int> nodesBetweenCriticalPoints(ListNode* head) {
@@ -21,40 +12,33 @@ public:
             return {-1, -1};
         }
 
-        int ctl_ctr = 0;
+        int ctl_ctr = 0, prev_ctl_node = 0;
         int node_ctr = 2;
         vector<int> result;
+        int minm =INT_MAX, maxm = 0,diff = 0,flag = 0;
 
         while (tp != NULL) {
 
             if ((fp->val > sp->val && tp->val > sp->val) ||
                 (fp->val < sp->val && tp->val < sp->val)) {
+  
+                if(flag){
+                    diff = node_ctr - prev_ctl_node;   
+                     minm = min(minm, diff);
+                     maxm +=  diff;
+                }
+                cout<<minm<<" "<<maxm<<endl;
                 ctl_ctr++;
-                result.push_back(node_ctr);
+                prev_ctl_node = node_ctr; 
+                flag = 1; 
             }
             node_ctr++;
             fp = sp;
             sp = tp;
             tp = tp->next;
         }
-        for(int i = 0 ; i< ctl_ctr; i++){
-            cout<< result[i] <<" ";
-        }
 
-        if (ctl_ctr > 1) {
-
-            int minm = INT_MAX;
-
-            for(int i = ctl_ctr - 1; i > 0; i--){
-            minm = min(minm,result[i] -  result[i - 1]);
-            }
-            int max = result[ctl_ctr - 1] - result[0];
-
-            result.clear();
-            result.push_back(minm);
-            result.push_back(max);
-            return result;
-        }
-        return {-1, -1};
+        if(ctl_ctr <2) return {-1, -1};
+        return {minm, maxm};
     }
 };
