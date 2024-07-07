@@ -4,22 +4,24 @@ public:
 
         int drink_bottles = 0, remBottles = 0;
 
-        while (numBottles) {
+        return numBottles + (numBottles - 1)/(numExchange - 1);
+        // ========== O LOG(numBottles) ==============
+        // while (numBottles) {
 
-            drink_bottles += numBottles;
+        //     drink_bottles += numBottles;
 
-            remBottles = remBottles + numBottles % numExchange;
+        //     remBottles = remBottles + numBottles % numExchange;
 
-            numBottles /= numExchange;
+        //     numBottles /= numExchange;
 
-            if (remBottles >= numExchange) {
+        //     if (remBottles >= numExchange) {
 
-                numBottles = numBottles + remBottles / numExchange;
-                remBottles = remBottles % numExchange;
+        //         numBottles = numBottles + remBottles / numExchange;
+        //         remBottles = remBottles % numExchange;
 
-            }
+        //     }
             
-        }
-        return drink_bottles;
+        // }
+        // return drink_bottles;
     }
 };
